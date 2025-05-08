@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.batyan"
-version = "0.0.1"
+version = "0.0.2"
 
 repositories {
     mavenCentral()
@@ -16,7 +16,7 @@ repositories {
 intellij {
     version.set("2023.2.8")
     type.set("IC") // Target IDE Platform
-
+    updateSinceUntilBuild.set(false)
     plugins.set(listOf(/* Plugin Dependencies */))
 }
 
@@ -32,7 +32,6 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("232")
-        untilBuild.set("244.*")
     }
 
     signPlugin {

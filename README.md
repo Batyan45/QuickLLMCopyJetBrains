@@ -93,4 +93,4 @@ None at the moment.
 
 ## Release Notes
 
-(To be created, e.g., `CHANGELOG.md`) 
+See [CHANGELOG.md](CHANGELOG.md) for version history and release notes. 

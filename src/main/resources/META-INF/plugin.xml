@@ -17,6 +17,19 @@
     Simple IntelliJ IDEA plugin that allows you to copy code files with their relative paths in a format suitable for LLM conversations.
   ]]></description>
 
+    <!-- Plugin version changes on the Plugin Page and IDE Plugin Manager.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-change-notes -->
+    <change-notes><![CDATA[
+    <h2>0.0.2</h2>
+    <ul>
+      <li>Fixed: Updated supported IDE versions compatibility</li>
+    </ul>
+    <h2>0.0.1</h2>
+    <ul>
+      <li>Initial release</li>
+    </ul>
+  ]]></change-notes>
+
     <!-- Product and plugin compatibility requirements.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
