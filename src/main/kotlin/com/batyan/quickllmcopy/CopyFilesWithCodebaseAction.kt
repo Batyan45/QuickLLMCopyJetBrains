@@ -1,5 +1,7 @@
 package com.batyan.QuickLLMCopy
 
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -7,7 +9,6 @@ import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.fileEditor.FileDocumentManager
 import com.intellij.openapi.ide.CopyPasteManager
 import com.intellij.openapi.project.Project
-import com.intellij.openapi.ui.Messages
 import com.intellij.openapi.vfs.VirtualFile
 import java.awt.datatransfer.StringSelection
 import java.io.IOException
@@ -49,6 +50,11 @@ class CopyFilesWithCodebaseAction : AnAction() {
                     }
                 } catch (ex: IOException) {
                     resultText.append("Error reading file: ${ex.message}")
+                    // Optionally, notify about the error using the notification system as well
+                    NotificationGroupManager.getInstance()
+                        .getNotificationGroup("Quick LLM Copy Notification")
+                        .createNotification("Error reading file: ${file.name} - ${ex.message}", NotificationType.WARNING)
+                        .notify(project)
                 }
                 resultText.append("\n```\n\n")
             }
@@ -66,7 +72,11 @@ class CopyFilesWithCodebaseAction : AnAction() {
         }
 
         CopyPasteManager.getInstance().setContents(StringSelection(resultText.toString()))
-        Messages.showInfoMessage("Code with codebase structure copied to clipboard!", "Quick LLM Copy")
+        // Messages.showInfoMessage("Code with codebase structure copied to clipboard!", "Quick LLM Copy") // Replaced
+        NotificationGroupManager.getInstance()
+            .getNotificationGroup("Quick LLM Copy Notification")
+            .createNotification("Code with codebase structure copied to clipboard!", NotificationType.INFORMATION)
+            .notify(project)
     }
 
     private fun collectFiles(file: VirtualFile, allFiles: MutableList<VirtualFile>) {
