@@ -2,6 +2,7 @@ package com.batyan.QuickLLMCopy
 
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.actionSystem.CommonDataKeys
@@ -90,5 +91,9 @@ class CopyFilesAction : AnAction() {
         val project = e.project
         val virtualFiles = e.getData(CommonDataKeys.VIRTUAL_FILE_ARRAY)
         e.presentation.isEnabledAndVisible = project != null && virtualFiles != null && virtualFiles.isNotEmpty()
+    }
+
+    override fun getActionUpdateThread(): ActionUpdateThread {
+        return ActionUpdateThread.BGT
     }
 } 
