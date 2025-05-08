@@ -22,38 +22,34 @@ Simple IntelliJ IDEA plugin that allows you to copy code files with their relati
 
 ### Standard Copy Format
 
-```text
+When you use Quick LLM Copy, the output will look like this:
+
+```
 Provided code:
 
 File: path/to/file1
-```
 // file1 contents
-```
 
 File: path/to/file2
-```
 // file2 contents
-```
+
 ```
 
 ### Copy with Codebase Format
 
-```text
+When you use Quick LLM Copy with Codebase, the output will include the project structure:
+
+```
 Provided code:
 
 File: path/to/file1
-```
 // file1 contents
-```
 
 File: path/to/file2
-```
 // file2 contents
-```
 
 You can ask for other files from the codebase if needed:
 
-```text
 Project structure:
 ├── src/
 │   ├── main/
@@ -69,7 +65,6 @@ Project structure:
 │   └── test/
 ├── build.gradle.kts
 └── settings.gradle.kts
-```
 ```
 
 ## Requirements
