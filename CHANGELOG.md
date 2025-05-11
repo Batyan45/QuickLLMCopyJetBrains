@@ -2,6 +2,10 @@
 
 All notable changes to the Quick LLM Copy plugin will be documented in this file.
 
+## [0.0.3] - 2024-07-23
+### Added
+- Settings page to exclusively manage 'Excluded Directories' (contributed by audichuang)
+
 ## [0.0.2] - 2024-07-20
 ### Fixed
 - Updated supported IDE versions compatibility
