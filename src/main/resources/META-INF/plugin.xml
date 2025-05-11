@@ -38,6 +38,12 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <notificationGroup id="Quick LLM Copy Notification" displayType="BALLOON" />
+        <applicationService serviceImplementation="com.batyan.QuickLLMCopy.QuickLLMCopySettingsService" />
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.batyan.QuickLLMCopy.QuickLLMCopySettingsConfigurable"
+                id="com.batyan.QuickLLMCopy.QuickLLMCopySettingsConfigurable"
+                displayName="Quick LLM Copy" />
     </extensions>
 
     <actions>

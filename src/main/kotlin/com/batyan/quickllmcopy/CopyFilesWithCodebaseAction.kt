@@ -14,6 +14,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import java.awt.datatransfer.StringSelection
 import java.io.IOException
 import java.nio.charset.StandardCharsets
+import com.batyan.QuickLLMCopy.QuickLLMCopySettingsService
 
 class CopyFilesWithCodebaseAction : AnAction() {
 
@@ -30,7 +31,7 @@ class CopyFilesWithCodebaseAction : AnAction() {
             collectFiles(file, allFiles)
         }
 
-        // TODO: Get prefix and codebase text from settings
+        // Using fixed prefix and codebase text as per user request
         val prefixText = "Provided code:"
         val codebaseText = "You can ask for other files from the codebase if needed:"
         val resultText = StringBuilder("$prefixText\n\n")
@@ -51,7 +52,6 @@ class CopyFilesWithCodebaseAction : AnAction() {
                     }
                 } catch (ex: IOException) {
                     resultText.append("Error reading file: ${ex.message}")
-                    // Optionally, notify about the error using the notification system as well
                     NotificationGroupManager.getInstance()
                         .getNotificationGroup("Quick LLM Copy Notification")
                         .createNotification("Error reading file: ${file.name} - ${ex.message}", NotificationType.WARNING)
@@ -73,7 +73,6 @@ class CopyFilesWithCodebaseAction : AnAction() {
         }
 
         CopyPasteManager.getInstance().setContents(StringSelection(resultText.toString()))
-        // Messages.showInfoMessage("Code with codebase structure copied to clipboard!", "Quick LLM Copy") // Replaced
         NotificationGroupManager.getInstance()
             .getNotificationGroup("Quick LLM Copy Notification")
             .createNotification("Code with codebase structure copied to clipboard!", NotificationType.INFORMATION)
@@ -100,11 +99,13 @@ class CopyFilesWithCodebaseAction : AnAction() {
         val tree = StringBuilder()
         val children = rootFile.children?.sortedWith(compareBy({ !it.isDirectory }, { it.name })) ?: return ""
 
+        // Get excluded directories from settings
+        val excludedDirs = QuickLLMCopySettingsService.getInstance().getExcludedDirectories()
+
         children.forEachIndexed { index, child ->
-            // Skip .idea, .git, .gradle, build directories commonly found in IntelliJ projects
-            if (child.name == ".idea" || child.name == ".git" || child.name == ".gradle" || child.name == "build" || child.name == "out") {
-                // continue to next iteration
-                 return@forEachIndexed
+            // Skip excluded directories
+            if (excludedDirs.contains(child.name)) {
+                return@forEachIndexed
             }
 
             val isLast = index == children.size - 1
