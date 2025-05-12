@@ -2,15 +2,20 @@
 
 All notable changes to the Quick LLM Copy plugin will be documented in this file.
 
-## [0.0.3] - 2024-07-23
+## [0.0.4] - 2025-05-12
+### Added
+- Handling binary files
+- Settings UI and file extension filtering (contributed by audichuang)
+
+## [0.0.3] - 2025-05-11
 ### Added
 - Settings page to exclusively manage 'Excluded Directories' (contributed by audichuang)
 
-## [0.0.2] - 2024-07-20
+## [0.0.2] - 2025-05-08
 ### Fixed
 - Updated supported IDE versions compatibility
 
-## [0.0.1] - 2024-07-15
+## [0.0.1] - 2025-05-08
 ### Added
 - Initial release
 - "Quick LLM Copy" option in the Project View context menu

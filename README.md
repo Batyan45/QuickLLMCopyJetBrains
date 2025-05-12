@@ -12,6 +12,8 @@ Simple IntelliJ IDEA plugin that allows you to copy code files with their relati
 - Supports recursive copying of directories and their contents.
 - Includes relative file paths in the copied text.
 - Formats the output in a way that's easy to paste into LLM conversations.
+- Handles binary files.
+- Settings UI for configuring excluded directories and file extension filtering.
 
 ## Usage
 
@@ -71,12 +73,14 @@ Project structure:
 
 - IntelliJ IDEA (refer to `since-build` in `plugin.xml` or `platformVersion` in `build.gradle.kts` for specific version compatibility).
 
-## Extension Settings (Planned)
+## Extension Settings
 
-This extension plans to contribute the following settings:
+The plugin provides the following settings:
 
-* `quickLLMCopy.prefixText`: The text that appears before the copied code content (default: "Provided code:")
-* `quickLLMCopy.codebaseText`: The text that appears before the codebase structure (default: "You can ask for other files from the codebase if needed:")
+* **Excluded Directories**: Configure directories that should be excluded from the codebase view (default: `.idea,.git,.gradle,build,out,node_modules`).
+* **File Extension Filtering**: Filter files by their extensions when copying.
+* **Prefix Text**: The text that appears before the copied code content (default: "Provided code:").
+* **Codebase Text**: The text that appears before the codebase structure (default: "You can ask for other files from the codebase if needed:").
 
 ## Known Issues
 
@@ -84,12 +88,9 @@ None at the moment.
 
 ## Future Plans
 
-- Implement a settings UI for `prefixText` and `codebaseText`.
 - Add support for custom output formats.
 - Add the ability to shorten code by removing comments or other elements.
-- Add support for filtering files by extension or other criteria.
-- Improve handling of very large or binary files.
-- Allow configuration of excluded directories for the codebase tree.
+- Improve performance with large projects.
 
 ## Release Notes
 
