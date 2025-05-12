@@ -42,23 +42,23 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <notificationGroup id="Quick LLM Copy Notification" displayType="BALLOON" />
-        <applicationService serviceImplementation="com.batyan.QuickLLMCopy.QuickLLMCopySettingsService" />
+        <applicationService serviceImplementation="com.batyan.quickllmcopy.setting.SettingsService" />
         <applicationConfigurable
                 parentId="tools"
-                instance="com.batyan.QuickLLMCopy.QuickLLMCopySettingsConfigurable"
-                id="com.batyan.QuickLLMCopy.QuickLLMCopySettingsConfigurable"
+                instance="com.batyan.quickllmcopy.setting.SettingsConfigurable"
+                id="com.batyan.quickllmcopy.setting.SettingsConfigurable"
                 displayName="Quick LLM Copy" />
     </extensions>
 
     <actions>
         <action id="QuickLLMCopy.CopyFilesAction"
-                class="com.batyan.QuickLLMCopy.CopyFilesAction"
+                class="com.batyan.quickllmcopy.action.CopyFilesAction"
                 text="Quick LLM Copy"
                 description="Copies selected files/directories formatted for LLM">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
         </action>
         <action id="QuickLLMCopy.CopyFilesWithCodebaseAction"
-                class="com.batyan.QuickLLMCopy.CopyFilesWithCodebaseAction"
+                class="com.batyan.quickllmcopy.action.CopyFilesWithCodebaseAction"
                 text="Quick LLM Copy (with Codebase)"
                 description="Copies selected files/directories and codebase structure formatted for LLM">
             <add-to-group group-id="ProjectViewPopupMenu" anchor="last"/>
