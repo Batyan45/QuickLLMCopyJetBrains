@@ -1,6 +1,17 @@
-# Quick LLM Copy (IntelliJ IDEA)
+# Quick LLM Copy
 
-![Screenshot](images/image.png)
+<p align="center">
+  <a href="https://plugins.jetbrains.com/plugin/27307-quickllmcopy">
+    <img src="https://img.shields.io/jetbrains/plugin/v/27307-quickllmcopy.svg" alt="Version">
+  </a>
+  <a href="https://plugins.jetbrains.com/plugin/27307-quickllmcopy">
+    <img src="https://img.shields.io/jetbrains/plugin/d/27307-quickllmcopy.svg" alt="Downloads">
+  </a>
+</p>
+
+<p align="center">
+  <img src="images/image.png" alt="QuickLLMCopy" width="650">
+</p>
 
 Simple IntelliJ IDEA plugin that allows you to copy code files with their relative paths in a format suitable for LLM conversations.
 

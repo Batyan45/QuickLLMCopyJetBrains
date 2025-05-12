@@ -14,7 +14,19 @@
          Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
     <description><![CDATA[
-    Simple IntelliJ IDEA plugin that allows you to copy code files with their relative paths in a format suitable for LLM conversations.
+    <p>Simple IntelliJ IDEA plugin that allows you to copy code files with their relative paths in a format suitable for LLM conversations.</p>
+    
+    <h2>Features</h2>
+    <ul>
+      <li>Adds "Quick LLM Copy" option to the context menu in the Project View.</li>
+      <li>Adds "Quick LLM Copy (with Codebase)" option to include the project directory structure.</li>
+      <li>Supports copying multiple files at once.</li>
+      <li>Supports recursive copying of directories and their contents.</li>
+      <li>Includes relative file paths in the copied text.</li>
+      <li>Formats the output in a way that's easy to paste into LLM conversations.</li>
+      <li>Handles binary files.</li>
+      <li>Settings UI for configuring excluded directories and file extension filtering.</li>
+    </ul>
   ]]></description>
 
     <!-- Plugin version changes on the Plugin Page and IDE Plugin Manager.
