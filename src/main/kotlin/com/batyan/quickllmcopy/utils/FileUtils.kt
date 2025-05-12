@@ -5,6 +5,7 @@ import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.fileEditor.FileDocumentManager
+import com.intellij.openapi.fileTypes.FileType
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.VirtualFile
@@ -96,9 +97,14 @@ object FileUtils {
                     if (document != null) {
                         resultText.append(document.text)
                     } else {
-                        resultText.append(
-                            String(file.contentsToByteArray(), StandardCharsets.UTF_8)
-                        )
+                        // Show a message if the file is binary
+                        if (file.fileType.isBinary) {
+                            resultText.append("[Binary file: content not displayed]")
+                        } else {
+                            resultText.append(
+                                String(file.contentsToByteArray(), StandardCharsets.UTF_8)
+                            )
+                        }
                     }
                 } catch (ex: IOException) {
                     resultText.append("Error reading file: ${ex.message}")
